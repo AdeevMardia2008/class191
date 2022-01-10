@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src='https://aframe.io/releases/1.0.4/aframe.min.js'></script>
+        <title>Car Simulation</title>
+        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+        <script src='./carTurns.js'></script>
+    </head>
+    <body>
+        <a-scene physics>
+            <a-entity id="look" look-controls camera position="0 2 20"></a-entity>
+        
+            <a-assets>
+                <a-asset-item
+                id='background'
+                src='./motocross_track/scene.gltf'>
+                </a-asset-item>
+                <a-asset-item
+                id='carmodel'
+                src='./racecar_rc-14/scene.gltf'>
+                </a-asset-item>
+                <a-asset-item
+                id='obstacle'
+                src='./belgian_gate/scene.gltf'>
+                </a-asset-item>
+            </a-assets>
+        
+            <a-entity id='scene' gltf-model='#background' position='-50 -40 0' rotation='0 90 0' scale='5 5 5'
+            animation='property:rotation;to:0 300 0;easing:linear;loop:true;dur:500000' backgroundrotation></a-entity>
+
+            <a-entity id='car' gltf-model='#carmodel' position='0 -6 7' scale='2 2 2' rotation='5 -180 0' carturn></a-entity>
+
+            <a-entity id='gate' gltf-model='#obstacle' position='10 -6 7' scale='0.01 0.01 0.01'></a-entity>
+        </a-scene>
+    </body>
+</html>
